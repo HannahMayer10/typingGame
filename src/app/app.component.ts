@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { lorem } from 'faker';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'typingGame';
+  randomSentence = lorem.sentence();
+  input = "";
+
+  onChange(input: string) {
+    this.input = input;
+  }
+  compare(random: string, input: string) {
+    if(!input){
+      return 'pending'      
+    }
+    return random === input ? 'correct' : 'incorrect'
+  }
 }
